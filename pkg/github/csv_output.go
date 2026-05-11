@@ -57,6 +57,9 @@ func withCSVOutputVariants(tools []inventory.ServerTool) []inventory.ServerTool 
 }
 
 func isCSVOutputTool(tool inventory.ServerTool) bool {
+	if !tool.Toolset.Default {
+		return false
+	}
 	if !strings.HasPrefix(tool.Tool.Name, "list_") {
 		return false
 	}
